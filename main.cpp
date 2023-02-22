@@ -1,35 +1,27 @@
 #include <SFML/Graphics.hpp>
+using namespace sf;
 
 int main()
 {
-    // Create the main window
-    sf::RenderWindow app(sf::VideoMode(800, 600), "SFML window");
 
-    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile("cb.bmp"))
-        return EXIT_FAILURE;
-    sf::Sprite sprite(texture);
+    RenderWindow app(VideoMode(600, 600), "CATCH & DIE !");
 
-	// Start the game loop
+
     while (app.isOpen())
     {
-        // Process events
-        sf::Event event;
+
+        Event event;
         while (app.pollEvent(event))
         {
-            // Close window : exit
-            if (event.type == sf::Event::Closed)
+
+            if (event.type == Event::Closed)
                 app.close();
         }
 
-        // Clear screen
+
         app.clear();
 
-        // Draw the sprite
-        app.draw(sprite);
 
-        // Update the window
         app.display();
     }
 

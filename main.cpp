@@ -8,8 +8,13 @@ int main()
 
     RenderWindow app(VideoMode(380, 380), "CATCH & DIE !");
     Texture texture;
+
+    texture.setRepeated(true);
+
     texture.loadFromFile("image/pic1.jpg");
     Sprite sprite(texture);
+    sprite.setTexture(texture);
+    sprite.setTextureRect(IntRect(0,0,380,380));
 
 
     while (app.isOpen())

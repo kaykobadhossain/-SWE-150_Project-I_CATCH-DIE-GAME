@@ -6,7 +6,10 @@ using namespace std;
 int main()
 {
 
-    RenderWindow app(VideoMode(600, 600), "CATCH & DIE !");
+    RenderWindow app(VideoMode(380, 380), "CATCH & DIE !");
+    Texture texture;
+    texture.loadFromFile("image/pic1.jpg");
+    Sprite sprite(texture);
 
 
     while (app.isOpen())
@@ -19,21 +22,13 @@ int main()
             if (event.type == Event::Closed)
                 app.close();
 
-            if(event.type==Event::KeyPressed)
-                cout<<"keyboard has been pressed"<<endl;
 
-            if(event.type==Event::MouseButtonPressed)
-                cout<<"Mouse has been pressed"<<endl;
-                if (event.key.code == Mouse::Left)
-                    cout<<"Left mouse pressed"<<endl;
-                else if (event.key.code == Mouse::Right)
-                    cout<<"Right mouse pressed"<<endl;
         }
 
 
         app.clear();
 
-
+        app.draw(sprite);
         app.display();
     }
 

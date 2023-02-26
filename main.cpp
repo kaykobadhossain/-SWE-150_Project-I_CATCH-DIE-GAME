@@ -1,20 +1,25 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include<iostream>
+
 using namespace sf;
 using namespace std;
 
 int main()
 {
 
-    RenderWindow app(VideoMode(380, 380), "CATCH & DIE !");
-    Texture texture;
+    bool welcome = true;
 
-    texture.setRepeated(true);
+    RenderWindow app(VideoMode(380, 380), "CATCH & DIE !");
+    Texture texture,swelcome;
+
+
 
     texture.loadFromFile("image/pic1.jpg");
-    Sprite sprite(texture);
-    sprite.setTexture(texture);
-    sprite.setTextureRect(IntRect(0,0,380,380));
+    swelcome.loadFromFile("image/cover.jpg");
+    Sprite sprite(texture),cover(swelcome);
+
+
 
 
     while (app.isOpen())
@@ -31,9 +36,17 @@ int main()
         }
 
 
-        app.clear();
+        app.clear(Color::White);
 
+        if(welcome == true)
+        {
+            app.draw(cover);
+            if(Keyboard::isKeyPressed(Keyboard::Enter))     welcome = false;
+        }
+        else{
         app.draw(sprite);
+        }
+
         app.display();
     }
 
